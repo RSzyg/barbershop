@@ -27,6 +27,7 @@ int main() {
     double currentTime = 0;
     int customerNumber = 0;
     double AWillWorkTill = 0, BWillWorkTill = 0;
+    int ACustomer = 0, BCustomer = 0;
     while (numberOfCustomersLeaving < 30) {
         bool waitingPeople = 0;
         if (numberOfCustomersWaiting) {
@@ -59,9 +60,11 @@ int main() {
 
         if (k == 0) { // To A
             AWillWorkTill = currentTime + getTimeOfA(needWash);
+            if ((++ACustomer) % 5 == 0) AWillWorkTill += 1;
             printf("   --- For A, will end at %5.3f\n", AWillWorkTill);
         } else { // To B
             BWillWorkTill = currentTime + getTimeOfB(needWash);
+            if ((++BCustomer) % 5 == 0) BWillWorkTill += 1;
             printf("   --- For B, will end at %5.3f\n", BWillWorkTill);
         }
 
